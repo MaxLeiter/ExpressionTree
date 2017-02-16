@@ -1,38 +1,5 @@
 public class ExpressionTree {
 
-	// This class contains a template for describing the nodes in an expression
-	// tree. The basic operations that are provided for expression trees are to
-	// evaluate the tree and to format the tree in RPN notation.
-	//
-	// Read and understand the basic structure of the template.
-	// Answer the following questions (as comments in your code - yes right here).
-
-	// 1. Why do we not declare any data members in the root class Node?
-	// Because different Node children will need different data members/types; some need ints, others strings, etc.
-	// 2. Why do we introduce derived abstract classes for unary/binary operator nodes?
-	// Because you never actually have a "unary" or "binary" operator - you have operators that are concrete children of them (add / subtract)
-	// 3. Why do we introduce an abstract method for the operator symbol?
-	// Because there is no single "operator" - similar to last question, you may have multiple operators that act differently.
-	// 4. Why do we not need to override format in each of the individual operator classes?
-	// Because the notation for each operator is the same - operand operand operator; we declare it in the parent Unary/Binary Operator class
-	// 5. The format method is recursive; why is there no explicit test for the base case?
-	// Because eventually the recursion ends when you hit the "child" class - Number.format() returns a String, not a recursive function call.
-	// 6. Why are there constructors in the abstract classes for unary/binary op nodes?
-	// so we can use super() in their  children and have the same Node members available to us. Also no need for duplicate constructors to be declared in each.
-
-	// Complete this code template to handle the unary operators negate and increment (++)
-	// as well as the standard binary operators add (+), subtract (-), multiply (*),
-	// divide (/) and mod (%). You will also need to complete this template for the
-	// leaf nodes: literals (numbers) and variables.
-	//
-	// There is a main method which can be used to test your program which takes an
-	// expression from the command line in RPN notation and builds an expression tree.
-	// Take care when invoking the test program: operands and operators must be separated
-	// by spaces and some operators (e.g., '*') must be placed in single quotes to
-	// prevent the shell from interpreting them as a wild card for file name matching:
-	//
-	// java ExpressionTree 2 5 '*'
-
 	private static LinearProbingHashMap<String, Integer> table;
 
 	public static abstract class Node {
