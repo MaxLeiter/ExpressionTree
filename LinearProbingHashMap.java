@@ -7,11 +7,10 @@ public class LinearProbingHashMap<Key, Value> {
 	private Value[] values;
 
 	private int mod = 0;
-	private int size;
+	private int size = 0;
 
 	public LinearProbingHashMap(int size) {
 		this.mod = size;
-		this.size = 0;
 		this.keys = (Key[]) new Object[mod];
 		this.values = (Value[]) new Object[mod];
 	}
@@ -41,10 +40,6 @@ public class LinearProbingHashMap<Key, Value> {
 		if (key == null) {
 			System.out.println("Key cannot be null");
 			return;
-		}
-
-		if (value == null) {
-			// what should i do?
 		}
 
 		if (size >= mod / 2) { // >= instead of =... took a while...
@@ -77,6 +72,14 @@ public class LinearProbingHashMap<Key, Value> {
 	}
 
 	public Value find(Key key) {
+		if (key == null || !this.contains(key)) {
+			try {
+				throw new Exception("key cannot be null in find()");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		int index = hash(key);
 		while (keys[index] != null && !keys[index].equals(key)) {
 			index++;
